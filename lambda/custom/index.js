@@ -88,8 +88,9 @@ const myAPI = {
 // 2. Skill Code =======================================================================================================
 
 const Alexa = require('alexa-sdk');
+const dashbot = require('dashbot')('REPLACE_WITH_YOUR_DASHBOT_API_KEY').alexa;
 
-exports.handler = function(event, context, callback) {
+exports.handler = dashbot.handler(function(event, context, callback) {
     let alexa = Alexa.handler(event, context);
 
     // alexa.appId = 'amzn1.echo-sdk-ams.app.1234';
@@ -97,7 +98,7 @@ exports.handler = function(event, context, callback) {
     alexa.resources = languageStrings;
     alexa.registerHandlers(handlers);
     alexa.execute();
-};
+});
 
 const handlers = {
     'LaunchRequest': function () {
